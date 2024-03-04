@@ -34,6 +34,10 @@ body {
   .required {
     color: #ff0000;
   }
+  .error-message {
+    color: #ff0000;
+    margin-top: 5px;
+  }
 
   @media (max-width: 600px) {
     form {
