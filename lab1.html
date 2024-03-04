@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Додавання товару</title>
+</head>
+
+<body>
+  <form id="productForm" action="#" method="post">
+    <label for="productName">Назва товару: <span class="required">*</span></label>
+    <input type="text" id="productName" name="productName" required>
+
+    <label for="productDescription">Опис товару:</label>
+    <textarea id="productDescription" name="productDescription" rows="4"></textarea>
+
+    <label for="productCategory">Категорія товару:</label>
+    <select id="productCategory" name="productCategory" >
+      <option value="electronics">Електроніка</option>
+      <option value="clothing">Одяг</option>
+      <option value="books">Книги</option>
+    </select>
+
+    <label for="productPrice">Ціна товару (грн): <span class="required">*</span></label>
+    <input type="number" id="productPrice" name="productPrice" min="0" required>
+
+    <label for="productStock">Кількість на складі: <span class="required">*</span></label>
+    <input type="number" id="productStock" name="productStock" min="0" required>
+
+    <label for="productImage">Зображення товару (URL):</label>
+    <input type="url" id="productImage" name="productImage">
+
+    <input type="submit" value="Додати товар">
+  </form>
+</body>
+
+</html>
