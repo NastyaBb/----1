@@ -1,8 +1,8 @@
  // Масив для зберігання товарів
- const products = [];
+ const cartItems = [];
 
  // Функція додавання товару
- function addProduct() {
+ function addToCart() {
    const productName = document.getElementById('productName').value;
    const productDescription = document.getElementById('productDescription').value;
    const productCategory = document.getElementById('productCategory').value;
@@ -10,13 +10,26 @@
    const productStock = document.getElementById('productStock').value;
 
    // Перевірка на дублювання
-   if (products.some(product => product.name === productName)) {
-     alert('Товар з такою назвою вже існує!');
-     return;
-   }
+   if (cartItems.some(item => item.productName === productName)) {
+    alert('Товар з такою назвою вже існує!');
+    return;
+  }
+   const item = {
+    productName,
+    productDescription,
+    productCategory,
+    productPrice,
+    productStock,
+  };
 
+  cartItems.push(item);
+
+  displayCartItems();
+
+   
+  
    // Додавання товару в масив
-   products.push({
+   cartItems.push({
      name: productName,
      description: productDescription,
      category: productCategory, // Оновлено для збереження значення категорії
@@ -32,17 +45,31 @@
    document.getElementById('productStock').value = '';
 
    // Виведення каталогу товарів
-   displayProductList();
+   displayCartItems();
  }
 
  // Функція виведення каталогу товарів
- function displayProductList() {
-   const productListContainer = document.getElementById('productList');
-   productListContainer.innerHTML = '';
+ function displayCartItems() {
+  const cartItemsContainer = document.getElementById('cartItems');
+  cartItemsContainer.innerHTML = '';
 
-   products.forEach(product => {
-     const productCard = document.createElement('div');
-     productCard.innerHTML = `<strong>${product.name}</strong><br>Опис: ${product.description}<br>Категорія: ${product.category}<br>Кількість на складі: ${product.stock}<br>Ціна: ${product.price} грн<br><br>`;
-     productListContainer.appendChild(productCard);
-   });
- }
+  cartItems.forEach(item => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${item.productName}</td>
+      <td>${item.productDescription}</td>
+      <td>${item.productCategory}</td>
+      <td>${item.productPrice}</td>
+      <td>${item.productStock}</td>
+      <td><button onclick="removeFromCart('${item.productName}')">Видалити</button></td>
+    `;
+
+    cartItemsContainer.appendChild(row);
+  });
+}
+
+
+function removeFromCart(product) {
+  cartItems = cartItems.filter(item => item.product !== product);
+  displayCartItems();
+}

@@ -10,7 +10,7 @@
 
 <body>
   <div>
-    <form id="productForm" action="#" method="post" onsubmit="event.preventDefault(); addProduct();" >
+    <form id="productForm" action="#" method="post" onsubmit="event.preventDefault(); addToCart();" >
       <label for="productName">Назва товару: <span class="required">*</span></label>
       <input type="text" id="productName" name="productName" required>
  
@@ -33,6 +33,24 @@
    
       <input type="submit" value="Додати товар">
     </form>
+
+    <div id="cart">
+      <h2>Додані товари</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Назва товару</th>
+            <th>Опис товару</th>
+            <th>Категорія товару</th>
+            <th>Ціна товару</th>
+            <th>Кількість на складі</th>
+            <th>Дії</th>
+          </tr>
+        </thead>
+        <tbody id="cartItems"></tbody>
+      </table>
+    </div>
+  </div>
 
   <div id="productList">
   </div>
