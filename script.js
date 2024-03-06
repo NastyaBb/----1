@@ -1,5 +1,5 @@
  // Масив для зберігання товарів
- const cartItems = [];
+ let cartItems = [];
 
  // Функція додавання товару
  function addToCart() {
@@ -24,19 +24,6 @@
 
   cartItems.push(item);
 
-  displayCartItems();
-
-   
-  
-   // Додавання товару в масив
-   cartItems.push({
-     name: productName,
-     description: productDescription,
-     category: productCategory, // Оновлено для збереження значення категорії
-     price: productPrice,
-     stock: productStock, // Додано поле "stock"
-   });
-
    // Очистка полів форми
    document.getElementById('productName').value = '';
    document.getElementById('productDescription').value = '';
@@ -49,7 +36,7 @@
  }
 
  // Функція виведення каталогу товарів
- function displayCartItems() {
+function displayCartItems() {
   const cartItemsContainer = document.getElementById('cartItems');
   cartItemsContainer.innerHTML = '';
 
@@ -69,7 +56,8 @@
 }
 
 
-function removeFromCart(product) {
-  cartItems = cartItems.filter(item => item.product !== product);
+function removeFromCart(productName) {
+  cartItems = cartItems.filter(item => item.productName !== productName);
   displayCartItems();
 }
+
